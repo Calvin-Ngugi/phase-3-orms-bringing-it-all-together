@@ -49,10 +49,7 @@ class Dog
     end
 
     def self.all
-        sql = <<-SQL
-        SELECT * FROM dogs
-        SQL
-        DB[:conn].execute(sql).collect do |row|
+        DB[:conn].execute("SELECT * FROM dogs").collect do |row|
             Dog.new_from_db row
         end
     end
